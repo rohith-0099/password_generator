@@ -35,32 +35,33 @@ def generate_password(length, include_uppercase, include_digits, include_symbols
     ambiguous_chars = 'lIO0'
 
     all_possible_chars = []
-    
     required_chars = []
 
     if include_uppercase:
         all_possible_chars.extend([c for c in uppercase_chars if not (exclude_ambiguous and c in ambiguous_chars)])
-        if all_possible_chars and any(c.isupper() for c in all_possible_chars):
-             required_chars.append(random.choice([c for c in all_possible_chars if c.isupper()]))
-    
+        if all_possible_chars:
+            required_chars.append(random.choice([c for c in uppercase_chars if not (exclude_ambiguous and c in ambiguous_chars)]))
+
     if include_digits:
         all_possible_chars.extend([c for c in digit_chars if not (exclude_ambiguous and c in ambiguous_chars)])
-        if all_possible_chars and any(c.isdigit() for c in all_possible_chars):
-            required_chars.append(random.choice([c for c in all_possible_chars if c.isdigit()]))
+        if all_possible_chars:
+            required_chars.append(random.choice([c for c in digit_chars if not (exclude_ambiguous and c in ambiguous_chars)]))
 
     if include_symbols:
         all_possible_chars.extend([c for c in symbol_chars if not (exclude_ambiguous and c in ambiguous_chars)])
-        if all_possible_chars and any(c in string.punctuation for c in all_possible_chars):
-            required_chars.append(random.choice([c for c in all_possible_chars if c in string.punctuation]))
+        if all_possible_chars:
+            required_chars.append(random.choice([c for c in symbol_chars if not (exclude_ambiguous and c in ambiguous_chars)]))
 
     base_lowercase_chars = [c for c in lowercase_chars if not (exclude_ambiguous and c in ambiguous_chars)]
     all_possible_chars.extend(base_lowercase_chars)
+    
     if not required_chars and length > 0 and base_lowercase_chars:
         required_chars.append(random.choice(base_lowercase_chars))
 
     all_possible_chars = list(set(all_possible_chars))
+
     if not all_possible_chars:
-        print("Warning: No valid characters to generate password. Using all lowercase as fallback.")
+        print("Warning: No valid characters to generate password based on your criteria. Using all lowercase as fallback.")
         all_possible_chars = list(lowercase_chars)
 
     if len(required_chars) > length:
@@ -85,20 +86,24 @@ def get_yes_no_input(prompt):
             print("Invalid input. Please type 'yes' or 'no'.")
 
 def main():
-    print("--- Advanced Random Password Generator ---")
+    print("--- Welcome to the Advanced Random Password Generator ---")
+    print("Create strong and secure passwords tailored to your needs.\n")
 
     while True:
         while True:
             try:
-                length = int(input("Enter desired password length (minimum 6, e.g., 12): "))
+                length = int(input("Enter desired password length (minimum recommended 8, e.g., 12): "))
                 if length <= 0:
                     print("Password length must be a positive number.")
-                elif length < 6:
-                    print("For better security, a minimum length of 6 is recommended.")
+                elif length < 8:
+                    print("Warning: For better security, a minimum length of 8 characters is strongly recommended.")
+                    if length < 4 and length > 0:
+                        print("A length this short will result in a very weak password.")
+                    break
                 else:
                     break
             except ValueError:
-                print("Invalid input. Please enter a number for length.")
+                print("Invalid input. Please enter a valid number for length.")
 
         include_uppercase = get_yes_no_input("Include uppercase letters? (yes/no): ")
         include_digits = get_yes_no_input("Include numbers? (yes/no): ")
@@ -107,10 +112,14 @@ def main():
         exclude_ambiguous = get_yes_no_input("Exclude ambiguous characters (e.g., 'l', 'I', 'O', '0')? (yes/no): ")
 
         if not (include_uppercase or include_digits or include_symbols):
-            print("Warning: No character types selected except lowercase. The password will only contain lowercase letters.")
-            if length == 0:
-                print("Password length is 0. No password will be generated.")
-                continue
+            if length > 0:
+                print("Warning: No character types selected except lowercase. The generated password will only contain lowercase letters.")
+            else:
+                print("Warning: Password length is 0. No password will be generated.")
+                if not get_yes_no_input("Do you want to try again with a valid length? (yes/no): "):
+                    break
+                else:
+                    continue
 
         while True:
             try:
@@ -133,7 +142,7 @@ def main():
         if not generate_again:
             break
 
-    print("Thank you for using the password generator!")
+    print("Thank you for using the password generator! Stay secure.")
 
 if __name__ == "__main__":
     main()
