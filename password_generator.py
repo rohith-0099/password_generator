@@ -38,19 +38,22 @@ def generate_password(length, include_uppercase, include_digits, include_symbols
     required_chars = []
 
     if include_uppercase:
-        all_possible_chars.extend([c for c in uppercase_chars if not (exclude_ambiguous and c in ambiguous_chars)])
-        if all_possible_chars:
-            required_chars.append(random.choice([c for c in uppercase_chars if not (exclude_ambiguous and c in ambiguous_chars)]))
+        chars_to_add = [c for c in uppercase_chars if not (exclude_ambiguous and c in ambiguous_chars)]
+        all_possible_chars.extend(chars_to_add)
+        if chars_to_add:
+            required_chars.append(random.choice(chars_to_add))
 
     if include_digits:
-        all_possible_chars.extend([c for c in digit_chars if not (exclude_ambiguous and c in ambiguous_chars)])
-        if all_possible_chars:
-            required_chars.append(random.choice([c for c in digit_chars if not (exclude_ambiguous and c in ambiguous_chars)]))
+        chars_to_add = [c for c in digit_chars if not (exclude_ambiguous and c in ambiguous_chars)]
+        all_possible_chars.extend(chars_to_add)
+        if chars_to_add:
+            required_chars.append(random.choice(chars_to_add))
 
     if include_symbols:
-        all_possible_chars.extend([c for c in symbol_chars if not (exclude_ambiguous and c in ambiguous_chars)])
-        if all_possible_chars:
-            required_chars.append(random.choice([c for c in symbol_chars if not (exclude_ambiguous and c in ambiguous_chars)]))
+        chars_to_add = [c for c in symbol_chars if not (exclude_ambiguous and c in ambiguous_chars)]
+        all_possible_chars.extend(chars_to_add)
+        if chars_to_add:
+            required_chars.append(random.choice(chars_to_add))
 
     base_lowercase_chars = [c for c in lowercase_chars if not (exclude_ambiguous and c in ambiguous_chars)]
     all_possible_chars.extend(base_lowercase_chars)
@@ -142,6 +145,8 @@ def main():
         if not generate_again:
             break
 
+if __name__ == "__main__":
+    main()
     print("Thank you for using the password generator! Stay secure.")
 
 if __name__ == "__main__":
