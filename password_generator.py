@@ -1,6 +1,6 @@
 import random
 import string
-
+#calculating password strength
 def calculate_password_strength(password):
     length = len(password)
     has_lowercase = any(c.islower() for c in password)
@@ -25,7 +25,7 @@ def calculate_password_strength(password):
         return "Medium"
     else:
         return "Weak"
-
+#generating password
 def generate_password(length, include_uppercase, include_digits, include_symbols, exclude_ambiguous):
     lowercase_chars = string.ascii_lowercase
     uppercase_chars = string.ascii_uppercase
