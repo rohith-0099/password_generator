@@ -61,6 +61,7 @@ def generate_password(length, include_uppercase, include_digits, include_symbols
     if not required_chars and length > 0 and base_lowercase_chars:
         required_chars.append(random.choice(base_lowercase_chars))
 
+    #all possible charaters
     all_possible_chars = list(set(all_possible_chars))
 
     if not all_possible_chars:
