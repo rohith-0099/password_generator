@@ -125,6 +125,7 @@ def main():
                 else:
                     continue
 
+        #change according to condition
         while True:
             try:
                 num_passwords = int(input("How many passwords do you want to generate? (e.g., 1): "))
