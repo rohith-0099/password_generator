@@ -36,7 +36,7 @@ def generate_password(length, include_uppercase, include_digits, include_symbols
 
     all_possible_chars = []
     required_chars = []
-
+#uppercase
     if include_uppercase:
         chars_to_add = [c for c in uppercase_chars if not (exclude_ambiguous and c in ambiguous_chars)]
         all_possible_chars.extend(chars_to_add)
