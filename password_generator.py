@@ -16,6 +16,7 @@ def calculate_password_strength(password):
     if length >= 16:
         score += 1
 #different char types
+    #selecting according to provided option
     char_types = sum([has_lowercase, has_uppercase, has_digit, has_symbol])
     score += char_types
 
