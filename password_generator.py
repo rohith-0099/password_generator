@@ -83,8 +83,10 @@ def generate_password(length, include_uppercase, include_digits, include_symbols
 def get_yes_no_input(prompt):
     while True:
         user_input = input(prompt).lower()
+        #yes or y
         if user_input in ['yes', 'y']:
             return True
+        #no or n
         elif user_input in ['no', 'n']:
             return False
         else:
