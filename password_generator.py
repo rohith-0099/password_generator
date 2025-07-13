@@ -49,7 +49,7 @@ def generate_password(length, include_uppercase, include_digits, include_symbols
         all_possible_chars.extend(chars_to_add)
         if chars_to_add:
             required_chars.append(random.choice(chars_to_add))
-
+#symbols
     if include_symbols:
         chars_to_add = [c for c in symbol_chars if not (exclude_ambiguous and c in ambiguous_chars)]
         all_possible_chars.extend(chars_to_add)
