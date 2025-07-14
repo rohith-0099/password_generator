@@ -21,7 +21,7 @@ def calculate_password_strength(password):
     score += char_types
 
     if score >= 6:
-        return "Strong"
+        return "Strong" #password strengths
     elif score >= 4:
         return "Medium"
     else:
