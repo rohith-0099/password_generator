@@ -146,7 +146,7 @@ def main():
             print(f"Password {i+1}: {password} (Strength: {strength})")
         print("---------------------------\n")
 
-        generate_again = get_yes_no_input("Generate more passwords? (yes/no): ")
+        generate_again = get_yes_no_input("Generate more passwords? (yes/no): ") #genereate more password
         if not generate_again:
             break
 
