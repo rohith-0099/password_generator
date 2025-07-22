@@ -94,7 +94,7 @@ def get_yes_no_input(prompt):
 
 def main():
     print("--- Welcome to the Advanced Random Password Generator ---") #tittle
-    print("Create strong and secure passwords tailored to your needs.\n")
+    print("Create strong and secure passwords tailored to your needs.\n") #sub
 
     while True:
         while True:
