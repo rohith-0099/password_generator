@@ -27,7 +27,7 @@ def calculate_password_strength(password):
     else:
         return "Weak"
 #generating password
-def generate_password(length, include_uppercase, include_digits, include_symbols, exclude_ambiguous):
+def generate_password(length, include_uppercase, include_digits, include_symbols, exclude_ambiguous): #according to needs
     lowercase_chars = string.ascii_lowercase
     uppercase_chars = string.ascii_uppercase
     digit_chars = string.digits
