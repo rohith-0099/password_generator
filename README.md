@@ -31,3 +31,4 @@ Generate Multiple Passwords: Allow users to generate several passwords at once.
 
 💻 Technologies
 Python
+VS code
