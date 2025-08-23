@@ -1,3 +1,15 @@
+
+# 🔑 Python Random Password Generator  
+
+![Python](https://img.shields.io/badge/python-3.8%2B-blue)  
+![License](https://img.shields.io/badge/license-MIT-green)  
+![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen)  
+
+A lightweight yet powerful command-line tool that generates strong, random, and customizable passwords to enhance your online security.  
+
+---
+
+
 # password_generator
 This Python script generates strong, random passwords. Users define the length and choose to include uppercase letters, numbers, and symbols. It ensures selected character types are present and shuffles the final password for maximum randomness, enhancing online security.
 Python Random Password Generator
